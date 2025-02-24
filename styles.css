@@ -1,0 +1,13 @@
+.input {
+   color: rgb(122, 122, 122);
+}
+
+body {
+    background-color: rgb(239, 249, 255);
+}
+
+#total {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
