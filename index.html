@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Investment Growth Calculator</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -13,7 +14,8 @@
     <div class="top-bar">
       <div class="top-bar-left">
         <ul class="menu">
-          <li class="menu-text">Logo</li>
+          <li class="menu-text"><img src = "logo.svg" alt = "money bag logo" width = "7%"/></li>
+          <li class="menu-text">Investment Growth Calculator</li>
         </ul>
       </div>
     </div>
@@ -22,18 +24,24 @@
     <div class="callout large primary">
       <div class="row column text-center">
         <h1>Investment Growth Calculator</h1>
-        <h2 class="subheader">introductory text</h2>
+        <h5 class="subheader">Welcome to the Investment Calculator! 
+        Whether you're planning for retirement, saving for a big purchase, 
+        or just curious about how your investments could grow over time, 
+        this tool helps you estimate the potential returns based on your initial investment, 
+        time horizon, and expected rate of return. 
+        Simply enter your details below to get a snapshot of how your money could grow 
+        with compound interest over the years. Start planning your financial future today!</h5>
       </div>
     </div>
 
     <!-- We can now combine rows and columns when there's only one column in that row -->
     <div class="row medium-8 large-7 columns">
       <form onsubmit="return getCompoundInterest()">
-        <label for="initial">Initial Investment</label>
+        <label for="initial" class="input">Initial Investment</label>
         <input type="number" id="initial" name="initial" step=".01" required/>
-        <label for="interest-rate">Annual Interest Rate Percentage</label>
+        <label for="interest-rate" class="input">Annual Interest Rate Percentage</label>
         <input type="number" id="interest-rate" name="interest-rate" required/>
-        <label for="retirement-year">Year of Retirement</label>
+        <label for="retirement-year" class="input">Year of Retirement</label>
         <input type="number" id="retirement-year" name="retirement-year" min="2025" maxlength="4" required/>
         <input type="submit"/>
       </form>
@@ -53,7 +61,7 @@
         // add logic for calculating compound interest 
         const total = initialAmount * Math.pow(1 + rate/100, time);
         document.getElementById("total").innerHTML = 
-        "Your total interest aoutn when you retire will be $" + total.toFixed(2);
+        "Your total interest amount when you retire will be $" + total.toFixed(2);
         // Stops the form from submitting and refreshing 
         return false; 
   }
