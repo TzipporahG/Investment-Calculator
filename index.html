@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Investment Growth Calculator</title>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
 
@@ -27,22 +28,36 @@
 
     <!-- We can now combine rows and columns when there's only one column in that row -->
     <div class="row medium-8 large-7 columns">
-      <form>
+      <form onsubmit="return getCompoundInterest()">
         <label for="initial">Initial Investment</label>
-        <input type="number" id="initial" name="initial" step=".01"/>
+        <input type="number" id="initial" name="initial" step=".01" required/>
         <label for="interest-rate">Annual Interest Rate Percentage</label>
-        <input type="number" id="interest-rate" name="interest-rate"/>
-        <label for="retirement-year" step="1">Year of Retirement</label>
-        <input type="number" id="retirement-year" name="retirement-year" min="2025" maxlength="4"/>
+        <input type="number" id="interest-rate" name="interest-rate" required/>
+        <label for="retirement-year">Year of Retirement</label>
+        <input type="number" id="retirement-year" name="retirement-year" min="2025" maxlength="4" required/>
         <input type="submit"/>
       </form>
-      <p id="total">total</p>
+      <p id="total"></p>
     </div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <script>
       $(document).foundation();
+
+      function getCompoundInterest() { 
+        const initialAmount = document.getElementById('initial').value; 
+        const rate = document.getElementById("interest-rate").value;
+        const retirement = document.getElementById("retirement-year").value;
+        const time = retirement - new Date().getFullYear();
+        // add logic for calculating compound interest 
+        const total = initialAmount * Math.pow(1 + rate/100, time);
+        document.getElementById("total").innerHTML = 
+        "Your total interest aoutn when you retire will be $" + total.toFixed(2);
+        // Stops the form from submitting and refreshing 
+        return false; 
+  }
+
     </script>
   </body>
 </html>
